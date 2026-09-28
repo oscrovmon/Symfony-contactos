@@ -1,10 +1,18 @@
-<!doctype html>
+{% extends 'base.html.twig' %}
 
-<html>
-<meta charset="utf-8">
-<body>
-	<h1>Contactos</h1>
-	<h2>Bienvenido a la web de contactos.</h2>
-	<p>Página de inicio</p>
-</body>
-</html>
+{% block body %}
+    <h1>Lista de Contactos</h1>
+    
+    <ul>
+    {% for contacto in contactos %}
+        <li>
+            <a href="{{ path('contacto', {'codigo': contacto.id}) }}">{{ contacto.nombre }}</a>
+            - <a href="{{ path('editar', {'codigo': contacto.id}) }}">Editar / Modificar</a>
+        </li>
+    {% else %}
+        <li>No hay contactos.</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{{ path('nuevo') }}">Nuevo Contacto</a>
+{% endblock %}

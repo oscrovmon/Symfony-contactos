@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo contacto{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h1 class="h4 m-0">Nuevo Contacto</h1>
+                </div>
+                <div class="card-body">
+                    {{ form_start(formulario) }}
+                        {{ form_widget(formulario) }}
+                    {{ form_end(formulario) }}
+                </div>
+            </div>
+            <a href="{{ path('inicio') }}" class="btn btn-link mt-3">← Volver a Inicio</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

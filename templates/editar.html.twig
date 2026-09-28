@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Editar {{ contacto.nombre }}</h1>
+
+    {{ form(formulario) }}
+
+    <br>
+    <a href="{{ path('inicio') }}">Volver al inicio</a>
+{% endblock %}

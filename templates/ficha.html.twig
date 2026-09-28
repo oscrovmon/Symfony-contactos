@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if contacto %}
+        <h1>Ficha de {{ contacto.nombre }}</h1>
+        <p><strong>Teléfono:</strong> {{ contacto.telefono }}</p>
+        <p><strong>Email:</strong> {{ contacto.email }}</p>
+
+        <a href="{{ path('editar', {'codigo': contacto.id}) }}">Editar / Modificar</a> |
+        <a href="{{ path('borrar', {'codigo': contacto.id}) }}">Borrar</a> |
+        <a href="{{ path('inicio') }}">Volver al inicio</a>
+    {% else %}
+        <p>Contacto no encontrado.</p>
+        <a href="{{ path('inicio') }}">Volver al inicio</a>
+    {% endif %}
+{% endblock %}
