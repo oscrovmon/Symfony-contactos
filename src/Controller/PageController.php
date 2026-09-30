@@ -19,8 +19,8 @@ final class PageController extends AbstractController
             'path' => 'src/Controller/PageController.php',
         ]);
     }
- #[Route('/', name: 'inicio')]
-
+    #[Route('/', name: 'inicio')]
+    #[Route('/index', name: 'app_index')]
     public function inicio(ManagerRegistry $doctrine): Response{
         $repositorio = $doctrine->getRepository(Contacto::class);
         // findAll es un método que se encuentra en el repositorio

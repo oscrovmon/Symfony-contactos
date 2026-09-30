@@ -15,6 +15,10 @@ final class ContactoController extends AbstractController
     #[Route('/contacto/{codigo}', name: 'contacto', requirements: ['codigo' => '\d+'])]
     public function ficha(ManagerRegistry $doctrine, int $codigo = 1): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirect('/index');
+        }
+
         $contacto = $doctrine->getRepository(Contacto::class)->find($codigo);
         return $this->render('ficha.html.twig', ['contacto' => $contacto]);
     }
@@ -22,6 +26,10 @@ final class ContactoController extends AbstractController
     #[Route('/contacto/nuevo', name: 'nuevo')]
     public function nuevo(ManagerRegistry $doctrine, Request $request): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirect('/index');
+        }
+
         $contacto = new Contacto();
         $formulario = $this->createForm(ContactoFormType::class, $contacto);
         $formulario->handleRequest($request);
@@ -39,6 +47,10 @@ final class ContactoController extends AbstractController
     #[Route('/contacto/editar/{codigo}', name: 'editar', requirements: ['codigo' => '\d+'])]
     public function editar(ManagerRegistry $doctrine, Request $request, int $codigo): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirect('/index');
+        }
+
         $contacto = $doctrine->getRepository(Contacto::class)->find($codigo);
         $formulario = $this->createForm(ContactoFormType::class, $contacto);
         $formulario->handleRequest($request);
@@ -68,6 +80,10 @@ final class ContactoController extends AbstractController
     #[Route('/contacto/borrar/{codigo}', name: 'borrar')]
     public function borrar(ManagerRegistry $doctrine, int $codigo): Response
     {
+        if (!$this->getUser()) {
+            return $this->redirect('/index');
+        }
+
         $contacto = $doctrine->getRepository(Contacto::class)->find($codigo);
         if ($contacto) {
             $em = $doctrine->getManager();
