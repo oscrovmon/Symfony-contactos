@@ -1,13 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Lista de Contactos</h1>
+    <h1>Bienvenido a la web de contactos</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="m-0">Página principal</h2>
+        <div>
+            <a href="{{ path('app_login') }}" class="btn btn-primary me-2">Login</a>
+            <a href="{{ path('app_register') }}" class="btn btn-secondary">Register</a>
+        </div>
+    </div>
     
     <ul>
     {% for contacto in contactos %}
         <li>
             <a href="{{ path('contacto', {'codigo': contacto.id}) }}">{{ contacto.nombre }}</a>
-            - <a href="{{ path('editar', {'codigo': contacto.id}) }}">Editar / Modificar</a>
+            - <a href="{{ path('editar', {'codigo': contacto.id}) }}">Editar / Borrar</a>
         </li>
     {% else %}
         <li>No hay contactos.</li>

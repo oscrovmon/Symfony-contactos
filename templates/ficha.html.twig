@@ -5,6 +5,7 @@
         <h1>Ficha de {{ contacto.nombre }}</h1>
         <p><strong>Teléfono:</strong> {{ contacto.telefono }}</p>
         <p><strong>Email:</strong> {{ contacto.email }}</p>
+        <p><strong>Provincia:</strong> {{ contacto.provincia ? contacto.provincia.nombre : 'Sin provincia' }}</p>
 
         <a href="{{ path('editar', {'codigo': contacto.id}) }}">Editar / Modificar</a> |
         <a href="{{ path('borrar', {'codigo': contacto.id}) }}">Borrar</a> |
